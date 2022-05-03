@@ -1,0 +1,18 @@
+<form class="form">
+  <div class="form-group">
+    <label for="article"></label>
+    <input class="input" type="text" name="article" [(ngModel)]="newArticle" placeholder="Ajoutez un article...">
+  </div>
+  <div>
+    <button class="btn" (click)="addArticle()">
+      Ajouter
+    </button>
+  </div>
+</form>
+
+<app-displaylist
+  [listeArticles]="articles"
+  (msgEvent)="deleteArticle($event)"
+  (plusOneEvent)="plusOneItem($event)"
+  (minusOneEvent)="minusOneItem($event)">
+</app-displaylist>

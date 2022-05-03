@@ -1,0 +1,25 @@
+<div>
+  <a routerLink="../crud">Revenir à la liste</a>
+</div>
+
+<div>
+  <form [formGroup]="registerForm" (ngSubmit)="registerFan()">
+    <p>Nom : <input type="text" formControlName="nom"></p>
+    <div>
+      <p>Date de naissance : <input type="date" formControlName="dateNaiss"></p>
+      <p *ngIf="registerForm.controls['dateNaiss'].invalid && registerForm.controls['dateNaiss'].touched">
+        {{registerForm.controls['dateNaiss'].errors ? registerForm.controls['dateNaiss'].errors['AgeError'] : ''}}
+      </p>
+    </div>
+
+    <div>
+      Catégories : <button type="button" (click)="addSerie()">Ajouter</button>
+      <p *ngFor="let cat of getSeries().controls; let i = index;" formArrayName="series">
+        {{i+1}} : <input type="text" [formControlName]="i">
+      </p>
+    </div>
+
+    <button type="submit" [disabled]="!registerForm.valid">Enregistrer</button>
+  </form>
+</div>
+

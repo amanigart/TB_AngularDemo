@@ -1,0 +1,16 @@
+<div>
+  <a routerLink="../../crud">Retour liste</a>
+</div>
+
+<h2>Détails</h2>
+<div>
+  <p>Id: {{ resolvedFan.id}}</p>
+  <p>Nom: {{ resolvedFan.nom }}</p>
+  <p>Date de naissance: {{ resolvedFan.dateNaiss.getDay() }}/{{ resolvedFan.dateNaiss.getMonth() }}/{{ resolvedFan.dateNaiss.getFullYear() }}</p>
+  <div>
+    <p><u>Séries favorites</u>:</p>
+    <ul *ngFor="let serie of resolvedFan.series">
+      <li>{{ serie }}</li>
+    </ul>
+  </div>
+</div>

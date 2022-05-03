@@ -1,0 +1,31 @@
+<div>
+  <a routerLink="../../crud">Retour liste</a>
+</div>
+
+<div *ngIf="resolvedFan">
+  <div>
+    <form [formGroup]="updateForm" (ngSubmit)="updateFan()">
+      <p>Nom : <input type="text" formControlName="nom"></p>
+      <div>
+        <p>Date de naissance : <input type="date" formControlName="dateNaiss"></p>
+        <p *ngIf="updateForm.controls['dateNaiss'].invalid && updateForm.controls['dateNaiss'].touched">
+          {{updateForm.controls['dateNaiss'].errors ? updateForm.controls['dateNaiss'].errors['AgeError'] : ''}}
+        </p>
+      </div>
+
+      <div>
+        Catégories : <button type="button" (click)="addSerie()">Ajouter</button>
+        <div *ngFor="let serie of getSeries().controls; let i = index;" formArrayName="series">
+          <p>
+            {{i+1}} : <input type="text" [formControlName]="i">
+          </p>
+        </div>
+        <!-- <p *ngFor="let cat of getSeries().controls; let i = index;" formArrayName="series">
+          {{i+1}} : <input type="text" [formControlName]="i">
+        </p> -->
+      </div>
+
+      <button type="submit" [disabled]="!updateForm.valid">Enregistrer</button>
+    </form>
+  </div>
+</div>

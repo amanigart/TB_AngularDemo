@@ -1,0 +1,12 @@
+<ul>
+  <li class="list" *ngFor="let article of sortByQuantity()">
+    <div>
+      <span>{{ article.name }} </span> <span class="quantity">({{ article.quantity }})</span>
+    </div>
+    <div>
+      <button class="btn-delete" (click)="plusOneItem(article)">+</button>
+      <button class="btn-delete" (click)="minusOneItem(article)">-</button>
+      <button class="btn-delete red" (click)="deleteArticle(article.name)">x</button>
+    </div>
+  </li>
+</ul>

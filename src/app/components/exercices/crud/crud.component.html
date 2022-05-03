@@ -1,0 +1,23 @@
+<div>
+  <button routerLink="../forms">Ajouter un fan</button>
+  <br/><br/>
+</div>
+
+<table>
+  <thead>
+    <th>ID</th>
+    <th>NOM</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody *ngFor="let fan of fans; let i = index;">
+    <tr>
+      <td>{{ fan.id }}</td>
+      <td>{{ fan.nom }}</td>
+      <td><button (click)="navToDetails(fan.id)">Détails</button></td>
+      <td><button (click)="navToUpdate(fan.id)">Modifier</button></td>
+      <td><button (click)="deleteFan(fan.id)">Supprimer</button></td>
+    </tr>
+  </tbody>
+</table>
